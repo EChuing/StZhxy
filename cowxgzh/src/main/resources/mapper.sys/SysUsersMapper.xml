@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fangzhizun.cowxgzh.dao.sys.SysUsersDao" >
+  <resultMap id="BaseResultMap" type="com.fangzhizun.cowxgzh.po.sys.SysUsers" >
+	  <id column="user_coding" property="userCoding" jdbcType="INTEGER" />
+	  <result column="su_department_id" property="suDepartmentId" jdbcType="INTEGER" />
+	  <result column="su_store_id" property="suStoreId" jdbcType="INTEGER" />
+	  <result column="su_permissions_id" property="suPermissionsId" jdbcType="INTEGER" />
+	  <result column="su_type" property="suType" jdbcType="VARCHAR" />
+	  <result column="su_name" property="suName" jdbcType="VARCHAR" />
+	  <result column="su_password" property="suPassword" jdbcType="VARCHAR" />
+	  <result column="su_staff_name" property="suStaffName" jdbcType="VARCHAR" />
+	  <result column="su_contact" property="suContact" jdbcType="VARCHAR" />
+	  <result column="su_idcard" property="suIdcard" jdbcType="VARCHAR" />
+	  <result column="su_bank_type" property="suBankType" jdbcType="VARCHAR" />
+	  <result column="su_bank_card_num" property="suBankCardNum" jdbcType="VARCHAR" />
+	  <result column="su_state" property="suState" jdbcType="VARCHAR" />
+	  <result column="su_whether_go_out" property="suWhetherGoOut" jdbcType="VARCHAR" />
+	  <result column="su_base_pay" property="suBasePay" jdbcType="DOUBLE" />
+	  <result column="su_merit_pay" property="suMeritPay" jdbcType="DOUBLE" />
+	  <result column="su_performance_salary" property="suPerformanceSalary" jdbcType="DOUBLE" />
+	  <result column="su_wage_losses" property="suWageLosses" jdbcType="DOUBLE" />
+	  <result column="su_choose_room_limit" property="suChooseRoomLimit" jdbcType="INTEGER" />
+	  <result column="su_choose_room_today" property="suChooseRoomToday" jdbcType="INTEGER" />
+	  <result column="su_md5_check" property="suMd5Check" jdbcType="VARCHAR" />
+	  <result column="su_md5_check_type" property="suMd5CheckType" jdbcType="INTEGER" />
+	  <result column="su_img_num" property="suImgNum" jdbcType="VARCHAR" />
+	  <result column="su_superior" property="suSuperior" jdbcType="INTEGER" />
+	  <result column="openid" property="openid" jdbcType="VARCHAR" />
+	  <result column="su_staff_id" property="suStaffId" jdbcType="VARCHAR" />
+	  <result column="su_the_store" property="suTheStore" jdbcType="VARCHAR" />
+	  <result column="su_dept_staff" property="suDeptStaff" jdbcType="VARCHAR" />
+	  <result column="su_staff_gender" property="suStaffGender" jdbcType="VARCHAR" />
+	  <result column="su_staff_birthday" property="suStaffBirthday" jdbcType="VARCHAR" />
+	  <result column="su_staff_certnumber" property="suStaffCertnumber" jdbcType="VARCHAR" />
+	  <result column="su_staff_nation" property="suStaffNation" jdbcType="VARCHAR" />
+	  <result column="su_staff_idissued" property="suStaffIdissued" jdbcType="VARCHAR" />
+	  <result column="su_staff_address" property="suStaffAddress" jdbcType="VARCHAR" />
+	  <result column="su_staff_issuedvaliddate" property="suStaffIssuedvaliddate" jdbcType="VARCHAR" />
+	  <result column="su_staff_currentAddress" property="suStaffCurrentaddress" jdbcType="VARCHAR" />
+	  <result column="su_staff_servicememotextnull" property="suStaffServicememotextnull" jdbcType="VARCHAR" />
+	  <result column="su_staff_remark" property="suStaffRemark" jdbcType="VARCHAR" />
+	  <result column="su_staff_nativeplace" property="suStaffNativeplace" jdbcType="VARCHAR" />
+	  <result column="su_staff_marriage" property="suStaffMarriage" jdbcType="VARCHAR" />
+	  <result column="su_staff_linkman" property="suStaffLinkman" jdbcType="VARCHAR" />
+	  <result column="su_staff_linkmanphone" property="suStaffLinkmanphone" jdbcType="VARCHAR" />
+	  <result column="su_staff_linkmanrelation" property="suStaffLinkmanrelation" jdbcType="VARCHAR" />
+	  <result column="su_app_auth" property="suAppAuth" jdbcType="INTEGER" />
+  </resultMap>
+
+	<!-- //用账号密码登录-->
+	<select id="checkUserLoginByNamePssWord" resultMap="BaseResultMap" parameterType="com.fangzhizun.cowxgzh.po.sys.SysUsers">
+		select *
+		from sys_users
+		where su_name = #{suName,jdbcType=VARCHAR}
+		and su_password = #{suPassword,jdbcType=VARCHAR}
+		and su_state = "正常"
+	</select>
+
+	<!--更新openid信息、  -->
+	<update id="updateRenterOpenId" parameterType="com.fangzhizun.cowxgzh.po.sys.SysUsers">
+		update sys_users
+		<set >
+			<if test="openid != null" >
+				openid = #{openid,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where user_coding = #{userCoding,jdbcType=INTEGER}
+	</update>
+
+	<!-- 用openid查询是否免密登录-->
+	<select id="getSysUsersPop" resultMap="BaseResultMap">
+		select *
+		from sys_users
+		where openid = #{openid,jdbcType=VARCHAR}
+	</select>
+</mapper>

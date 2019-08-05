@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>智慧校园</title>
+<!--    <script type="text/javascript" src="<%=path%>/js/jquery.min.js"></script>-->
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <link rel="stylesheet" href="css/swiper/swiper.min.css">
+    <link rel="stylesheet" href="css/style/weui.css"/>
+    <script src="http://pic-static.fangzhizun.com/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="js/device/commonScenarios.js"></script>
+    <script type="text/javascript" src="js/device/intelligentJump.js"></script>
+    <style>
+        html, body {
+            position: relative;
+            height: 100%;
+            background-color:#eff3f7;
+            margin: 0 3px 0 3px;
+            padding: 0;
+        }
+
+        .swiper-container {
+            width: 98%;
+            height: 450px;
+
+        }
+        .swiper-slide {
+            text-align: center;
+        }
+
+        .content {
+            width: 98%;
+            height: 80px;
+            margin: 2% 1%;
+            margin-right: 0px;
+            background-color: white;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            border-radius: 15px;
+        }
+
+        .content img {
+            width: 50px;
+            height: 50px;
+            margin-left: 10px;
+            /*margin-right: 10px;*/
+        }
+
+        .content_info {
+            width: 61%;
+            height:80px;
+            margin-left: 10px;
+            line-height: 35px;
+            font-weight: 550;
+        }
+
+        .info_title{
+            width: auto;
+            font-size: 15px;
+            margin-top: 0px;
+        }
+
+        .state {
+            font-size: 14px;
+            line-height:20px;
+            display: flex;
+            flex-direction: column;
+            /*margin-top: 15px;*/
+            color:#495060;
+        }
+
+        .title{
+            width:98%;
+            height:3rem;
+            text-align: center;
+            margin-left: 1%;
+            font-size:18px;
+            font-weight: 600;
+            line-height: 3rem;
+            background-color:white;
+            border-radius: 5px;
+        }
+
+        /*开关css*/
+
+        .key{
+            display: none;
+        }
+
+        .key-bg{
+            position: relative;
+            display: inline-block;
+            width: 55px;
+            height: 25px;
+            background-color: #ccc;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+        .circle{
+            position: absolute;
+            left: 1px;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #fff;
+        }
+        .on {
+            padding-left: 10px;display:none;
+        }
+
+        .off {
+            padding-left: 45px;display: block;color: #000;
+        }
+
+        .key-bg .circle{
+            left: 1px;transition: all 0.5s;
+        }
+
+        .key:checked + .key-bg .circle{
+            left: 30px;
+        }
+
+        .key:checked + .key-bg{
+            background: linear-gradient(to right,#4AB130, #4AB130);
+        }
+
+        .key:checked + .key-bg .on{
+            display: block;
+        }
+
+        .key:checked + .key-bg .off{
+            display: none;
+        }
+
+    </style>
+</head>
+
+<body>
+<div style="position: relative;">
+    <input id="hsId" type="hidden" th:value="${hsId}">
+    <!--头部图片-->
+    <div class="swiper-container1">
+        <div style="width:100%;height:3px;"></div>
+        <div class="swiper-wrapper1" id="indexImg">
+<!--             <div class="swiper-slide"><img src="http://pic-gongkai.fangzhizun.com/FliSd57POj1XjmWyGGThxRQizWun7163.jpg" style="width:100%;height:450px;"></div>-->
+             <div class="swiper-slide1"><img src="img/head.png" style="width:100%;height:160px;"></div>
+        </div>
+    </div>
+
+    <!--标题-->
+    <div class="title" id="houserSelect">
+        智能设备控制首页
+    </div>
+
+    <div id="devicesDisplaying"></div>
+
+    <!--提示信息-->
+    <div id="toast" style="display: none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast2">
+            <i class="weui-icon-success-no-circle weui-icon_toast" style="margin-top:10px;font-size:40px;"></i>
+            <p id="msg" class="weui-toast__content"style="font-size:24px;">执行成功</p>
+        </div>
+    </div>
+</div>
+
+<div style="height:10%;width: 100%"></div>
+
+<!--尾部-->
+<div style="width: 100%;">
+
+    <div style="border-top: 1px solid #F0F8FF;width: 100%;height:70px;z-index:999;position:fixed;bottom:0;background-color: #ffffff;margin: 5px 0 0 0">
+        <div style="text-align: center;margin: 5px 0 0 0;float:left;width:25%" onclick="commonAreaList()">
+            <img src="img/wodezhijia.png" style="width: 30px;height: 30px;" data-toggle="modal" data-target="#myModal_1" />
+            <div style="color: black;">教室列表</div>
+        </div>
+        <div style="text-align: center;margin: 5px 0 0 0;float:left;width:25%" onclick="commonScenarios()">
+            <img src="img/moshishezhi.png" style="width: 30px;height: 30px;" data-toggle="modal" data-target="#myModal_1" />
+            <div style="color: black;">常用情景</div>
+        </div>
+        <div style="text-align: center;margin: 5px 0 0 0;float:left;width:25%" onclick="modeSettings()">
+            <img src="img/moshishezhi.png"  style="width: 30px;height: 30px;" data-toggle="modal" data-target="#myModal_1" />
+            <div style="color: black;">模式设置</div>
+        </div>
+        <div style="text-align: center;margin: 5px 0 0 0;float:left;width:25%" onclick="situatinalPatterns()">
+            <img src="img/qingjingmoshi.png" style="width: 30px;height: 30px;" data-toggle="modal" data-target="#myModal_1" />
+            <div style="color: black;">情景模式</div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

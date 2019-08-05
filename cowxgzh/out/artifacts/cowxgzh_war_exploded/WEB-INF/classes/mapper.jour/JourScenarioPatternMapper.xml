@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fangzhizun.cowxgzh.dao.jour.JourScenarioPatternDao" >
+  <resultMap id="BaseResultMap" type="com.fangzhizun.cowxgzh.po.jour.JourScenarioPattern" >
+	  <id column="jsro_id" property="jsroId" jdbcType="INTEGER" />
+	  <result column="jsro_hs_id" property="jsroHsId" jdbcType="INTEGER" />
+	  <result column="jsro_wxgzh_state" property="jsroWxgzhState" jdbcType="VARCHAR" />
+	  <result column="jsro_ims_state" property="jsroImsState" jdbcType="VARCHAR" />
+	  <result column="jsro_pattern_id" property="jsroPatternId" jdbcType="INTEGER" />
+
+	  <!--情景模式描述表-->
+	  <result column="spd_id" property="spdId" jdbcType="INTEGER" />
+	  <result column="spd_number" property="spdNumber" jdbcType="VARCHAR" />
+	  <result column="spd_describe" property="spdDescribe" jdbcType="VARCHAR" />
+  </resultMap>
+
+	<!-- 查询情景指令-->
+	<select id="selectScene" resultMap="BaseResultMap" parameterType="com.fangzhizun.cowxgzh.po.jour.JourScenarioPattern">
+		select * from jour_scenario_pattern_table
+			where jsro_hs_id=#{jsroHsId,jdbcType=INTEGER}
+			and jsro_pattern_id=#{jsroPatternId,jdbcType=INTEGER}
+	</select>
+
+	<!-- 查询情景模式-->
+	<select id="selectSceneMode" resultMap="BaseResultMap" parameterType="com.fangzhizun.cowxgzh.po.jour.JourScenarioPattern">
+		select * from jour_scenario_pattern_table jspt
+		left outer join jour_scenario_pattern_description jspd on  jspd.spd_id=jspt.jsro_pattern_id
+		where jsro_hs_id = #{jsroHsId,jdbcType=INTEGER}
+
+	</select>
+
+	<update id="updateScenario" parameterType="com.fangzhizun.cowxgzh.po.jour.JourScenarioPattern">
+		update jour_scenario_pattern_table
+		<set >
+			<if test="jsroHsId != null" >
+				jsro_hs_id = #{jsroHsId,jdbcType=INTEGER},
+			</if>
+			<if test="jsroWxgzhState != null" >
+				jsro_wxgzh_state = #{jsroWxgzhState,jdbcType=VARCHAR},
+			</if>
+			<if test="jsroImsState != null" >
+				jsro_ims_state = #{jsroImsState,jdbcType=VARCHAR},
+			</if>
+			<if test="jsroPatternId != null" >
+				jsro_pattern_id = #{jsroPatternId,jdbcType=INTEGER},
+			</if>
+			<if test="jsroInstruction != null" >
+				jsro_instruction = #{jsroInstruction,jdbcType=LONGVARCHAR},
+			</if>
+		</set>
+		where jsro_id = #{jsroId,jdbcType=INTEGER}
+	</update>
+
+	<insert id="newAddScenario" parameterType="com.fangzhizun.cowxgzh.po.jour.JourScenarioPattern" >
+		insert into jour_scenario_pattern_table
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="jsroId != null" >
+				jsro_id,
+			</if>
+			<if test="jsroHsId != null" >
+				jsro_hs_id,
+			</if>
+			<if test="jsroWxgzhState != null" >
+				jsro_wxgzh_state,
+			</if>
+			<if test="jsroImsState != null" >
+				jsro_ims_state,
+			</if>
+			<if test="jsroPatternId != null" >
+				jsro_pattern_id,
+			</if>
+			<if test="jsroInstruction != null" >
+				jsro_instruction,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="jsroId != null" >
+				#{jsroId,jdbcType=INTEGER},
+			</if>
+			<if test="jsroHsId != null" >
+				#{jsroHsId,jdbcType=INTEGER},
+			</if>
+			<if test="jsroWxgzhState != null" >
+				#{jsroWxgzhState,jdbcType=VARCHAR},
+			</if>
+			<if test="jsroImsState != null" >
+				#{jsroImsState,jdbcType=VARCHAR},
+			</if>
+			<if test="jsroPatternId != null" >
+				#{jsroPatternId,jdbcType=INTEGER},
+			</if>
+			<if test="jsroInstruction != null" >
+				#{jsroInstruction,jdbcType=LONGVARCHAR},
+			</if>
+		</trim>
+	</insert>
+</mapper>

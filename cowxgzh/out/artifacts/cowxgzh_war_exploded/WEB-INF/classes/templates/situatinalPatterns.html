@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>情景模式</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <link rel="stylesheet" href="css/swiper/swiper.min.css">
+    <link rel="stylesheet" href="css/style/weui.css"/>
+    <link rel="stylesheet" href="css/style/example.css"/>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
+    <script src="http://pic-static.fangzhizun.com/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="js/device/situatinalPatterns.js"></script>
+    <script type="text/javascript" src="js/device/intelligentJump.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.0/js/swiper.min.js"></script>
+
+    <!-- Demo styles -->
+    <style>
+        html, body {
+            position: relative;
+            height: 100%;
+            background-color:#eff3f7;
+            margin: 0 3px 0 3px;
+            padding: 0;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 450px;
+
+        }
+        .swiper-slide {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<!-- Swiper -->
+<div style="position: relative;">
+    <input id="hsId" type="hidden" th:value="${hsId}">
+    <!--头部图片-->
+    <div class="swiper-container1">
+        <div style="width:100%;height:5px; background-color:#eff3f7;"></div>
+        <div class="swiper-wrapper1" id="img">
+            <div class="swiper-slide1"><img src="img/head.png" style="width:100%;height:160px;"></div>
+        </div>
+    </div>
+
+    <!--标题-->
+    <div class="title" id="houserSelect" style="width: 100%; height: 3rem;text-align: center;line-height: 3rem;border-radius:5px;font-size: 19px;background-color: white;">
+        智能校园首页
+    </div>
+
+    <!--情景模式-->
+    <div class="buttom" style="width:100%;margin-top:5px;background-color:white;">
+        <div style="width:100%;float:left;background-color:white;" id="patternDiv"></div>
+        <!--提示窗口-->
+        <div id="toast" style="display:none;">
+            <div class="weui-mask_transparent"></div>
+            <div class="weui-toast2">
+                <i class="weui-icon-success-no-circle weui-icon_toast" style="margin-top:10px;font-size:40px;"></i>
+                <p id="resultMsg" class="weui-toast__content"style="font-size:24px;">启动成功</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div style="position: relative;">-->
+<!--    <div style="height:10%;width: 100%"></div>-->
+<!--</div>-->
+
+<!--尾部导航栏-->
+<div style="width: 100%;">
+    <div style="border-top: 1px solid #F0F8FF;width: 100%;height:70px;z-index:999;position:fixed;bottom:0;background-color: #ffffff;margin: 5px 0 0 0">
+        <div style="text-align: center;margin: 5px 0 0 0;float:left;width:25%" onclick="commonAreaList()">
+            <img src="img/wodezhijia.png" style="width: 30px;height: 30px;" data-toggle="modal" data-target="#myModal_1" />
+            <div style="color: black;">教室列表</div>
+        </div>
+        <div style="text-align: center;margin: 5px 0 0 0;float:left;width:25%" onclick="commonScenarios()">
+            <img src="img/moshishezhi.png" style="width: 30px;height: 30px;" data-toggle="modal" data-target="#myModal_1" />
+            <div style="color: black;">常用情景</div>
+        </div>
+        <div style="text-align: center;margin: 5px 0 0 0;float:left;width:25%" onclick="modeSettings()">
+            <img src="img/moshishezhi.png"  style="width: 30px;height: 30px;" data-toggle="modal" data-target="#myModal_1" />
+            <div style="color: black;">模式设置</div>
+        </div>
+        <div style="text-align: center;margin: 5px 0 0 0;float:left;width:25%" onclick="situatinalPatterns()">
+            <img src="img/qingjingmoshi.png" style="width: 30px;height: 30px;" data-toggle="modal" data-target="#myModal_1" />
+            <div style="color: black;">情景模式</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var mySwiper = new Swiper ('.swiper-container', {
+        autoplay: false,
+        loop: true, // 循环模式选项
+        observer:true,//修改swiper自己或子元素时，自动初始化swiper
+        observeParents:false,//修改swiper的父元素时，自动初始化swiper
+        on: {
+            slideChange: function(){
+                var index=this.activeIndex;
+            },
+        },
+
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>情景设置</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<!--    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+    <link rel="stylesheet" href="js/bootstrap-4.0.0/css/bootstrap.min.css" />
+    <script  type="text/javascript" src="js/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/style/weui.css"/>
+    <link rel="stylesheet" href="css/example.css"/>
+
+    <style type="text/css">
+        * {
+            padding: 0;
+            list-style: none;
+            border: 0;
+        }
+        html,body{
+            position: relative;
+            height: 100%;
+            background-color:#eff3f7;
+            margin: 0 3px 0 3px;
+            overflow-x:hidden;
+        }
+
+        .all {
+            width: 100%;
+            height: 100px;
+            background-color: #EFF3F7;
+        }
+        .content {
+            width: 97%;
+            height: 70px;
+            margin: 2% 1.5%;
+            margin-right: 0px;
+            background-color: white;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            border-radius: 10px;
+        }
+
+        .content img {
+            width: 13%;
+            height: 52px;
+            margin-left: 15px;
+            margin-right: 10px;
+        }
+
+        .content_info {
+            width: 55%;
+            height: 50px;
+            margin-left: 10px;
+            font-weight: 550;
+        }
+
+        .info_title{
+            width: auto;
+            font-size: 14px;
+        }
+
+        .state {
+            font-size: 15px;
+            line-height: 1px;
+            display: flex;
+            flex-direction: column;
+            margin-top: 1px;
+            color:#495060;
+        }
+
+        .buttom {
+            width: auto;
+            height: auto;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .btn {
+            width: 160px;
+            height: 35px;
+            line-height: 1px;
+            background-color: #4AB130;
+            border-radius: 100px;
+            color: white;
+            font-size: 24px;
+        }
+
+        /*开关css*/
+
+        .key{
+            display: none;
+        }
+
+        .key-bg{
+            position: relative;
+            display: inline-block;
+            width: 55px;
+            height: 22px;
+            background-color: #ccc;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+        .circle{
+            position: absolute;
+            left: 1px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #fff;
+        }
+        .on {
+            padding-left: 10px;display:none;
+        }
+
+        .off {
+            padding-left: 40px;display: block;color: #000;
+        }
+
+        .key-bg .circle{
+            left: 1px;transition: all 0.5s;
+        }
+
+        .key:checked + .key-bg .circle{
+            left: 33px;
+        }
+
+        .key:checked + .key-bg{
+            background: linear-gradient(to left,#4AB130, #4AB130);
+        }
+
+        .key:checked + .key-bg .on{
+            display: block;
+        }
+
+        .key:checked + .key-bg .off{
+            display: none;
+        }
+        .columns1{
+            width: 500px;
+            height: 90px;
+            text-align: center;
+        }
+        .columns2{
+            width: 500px;
+            height: 70px;
+            text-align: center;
+        }
+        .width2{
+            width: 40px;
+            height: 40px;
+
+            margin-left:10px;
+            float: left;
+        }
+        .width2 span{
+            line-height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="all">
+    <input id="giveParameter" type="hidden" th:value="${giveParameter}">
+
+    <input id="sroId" type="hidden">
+    <!--设备展示信息-->
+    <div class="lunbo" id='box'></div>
+
+    <!--设置冷暖灯的信息-->
+    <div id="dialogs0">
+        <div class="js_dialog" id="iosDialog0"  style="display: none;">
+            <div class="weui-mask"></div>
+            <div class="weui-dialog">
+                <div class="weui-dialog__hd"><strong class="weui-dialog__title"></strong></div>
+                <div class="columns1" id="brightnessDiv">
+                    <div class="width2" style="margin-left:30px;">
+                        <!--亮度减-->
+                        <p style="margin-left: -15px;">
+                            <img src="img/airConditioning/7.png" id="brightnessReduce" style="width:30px;height:30px;" />
+                        </p>
+                    </div>
+                    <div class="width2" style="width: 150px;">
+                        <!--显示亮度-->
+                        <span style="font-size: 24px;" id="brightness">50</span>
+                        <span style="font-size:22px;">（亮度）</span>
+                    </div>
+                    <div class="width2">
+                        <!--亮度加-->
+                        <p>
+                            <img src="img/airConditioning/6.png" id="brightnessAdd" style="width: 30px;height: 30px;"/>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="columns2" id="colorTemperatureDiv">
+                    <div class="width2" style="margin-left:30px;">
+                        <!--亮度加-->
+                        <p style="margin-left: -15px;">
+                            <img src="img/airConditioning/7.png" id="colorTemperatureReduce" style="width: 30px;height: 30px;" />
+                        </p>
+                    </div>
+                    <div class="width2" style="width: 150px;">
+                        <!--显示亮度-->
+                        <span style="font-size:24px;" id="colorTemperature">50</span>
+                        <span style="font-size:22px;">（色温）</span>
+                    </div>
+                    <div class="width2">
+                        <!--亮度减-->
+                        <p>
+                            <img src="img/airConditioning/6.png" id="colorTemperatureAdd" style="width: 30px;height: 30px;"/>
+                        </p>
+                    </div>
+                </div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" onclick="lightingCancellation()" class="weui-dialog__btn weui-dialog__btn_default">取消</a>
+                    <a href="javascript:;" onclick="lightingDetermination()" class="weui-dialog__btn weui-dialog__btn_primary">确认</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--保存提示信息-->
+    <div id="toast" style="display: none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+            <i class="weui-icon-success-no-circle weui-icon_toast" style="margin:20px 0 0 0;font-size:26px;"></i>
+            <p class="weui-toast__content" style="font-size:24px;" id="msg">已完成</p>
+        </div>
+    </div>
+
+<div id="dialogs">
+    <!--关闭或激活设备提示弹窗-->
+    <div class="js_dialog" id="iosDialog1" style="display: none;">
+        <div class="weui-mask"></div>
+        <div class="weui-dialog">
+            <div class="weui-dialog__hd"><strong class="weui-dialog__title"></strong></div>
+            <div class="weui-dialog__bd" id="containerBd">弹窗内容</div>
+            <div class="weui-dialog__ft">
+                <a href="javascript:;" onclick="cancelBth()" class="weui-dialog__btn weui-dialog__btn_default">取消</a>
+                <a href="javascript:;" onclick="confirmBth()" class="weui-dialog__btn weui-dialog__btn_primary">确认</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script  type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
+<script type="text/javascript" src="js/device/scenarioSetting.js"></script>
+</body>
+
+</html>

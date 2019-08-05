@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>情景面板</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="http://pic-static.fangzhizun.com/jquery/2.1.4/jquery.min.js"></script>
+    <script  type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/giveYou/scenarioPanel.js"></script>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        html,body{
+            position: relative;
+            height: 100%;
+            background-color:#eff3f7;
+            margin: 0 3px 0 3px;
+            overflow-x:hidden;
+        }
+
+        .all {
+            width: 100%;
+            background-color: #EFF3F7;
+        }
+
+        .content {
+            width: 97%;
+            height: 80px;
+            margin: 2% 1.5%;
+            margin-right: 0px;
+            background-color: white;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .content img {
+            width: 50px;
+            height: 50px;
+            margin-left: 15px;
+            margin-right: 10px;
+        }
+
+        .content_info {
+            width: 50%;
+            height: 50px;
+            margin: 0 4% 0 3%;
+            font-weight: 550;
+            font-size: 20px;
+            line-height: 50px;
+        }
+
+
+        .picker{
+            width: auto;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .back{
+            font-size: 18px;
+            font-weight: 300;
+        }
+    </style>
+</head>
+
+<body>
+<!-- 隐藏input接受参数 -->
+<input id="deviceInformation" type="hidden" th:value="${deviceInformation}"/>
+<input id="GROUP_NUM" type="hidden" />
+<!-- 重要参数请勿动 end -->
+<div class="all">
+
+    <div class="content">
+        <img src="img/ic_dt_sweepfloor_icon.png" />
+        <div class="content_info">
+            <text class="info_title">1号按键</text>
+        </div>
+        <div class="picker" onclick="setting(0)">
+            <text class="back">设置></text>
+        </div>
+    </div>
+    <div class="content">
+        <img src="img/ic_dt_sweepfloor_icon.png" />
+        <div class="content_info">
+            <text class="info_title">2号按键</text>
+        </div>
+        <div class="picker" onclick="setting(1)">
+            <text class="back">设置></text>
+        </div>
+    </div>
+    <div class="content">
+        <img src="img/ic_dt_sweepfloor_icon.png" />
+        <div class="content_info">
+            <text class="info_title">3号按键</text>
+        </div>
+        <div class="picker" onclick="setting(2)">
+            <text class="back">设置></text>
+        </div>
+    </div>
+    <div class="content">
+        <img src="img/ic_dt_sweepfloor_icon.png" />
+        <div class="content_info">
+            <text class="info_title">4号按键</text>
+        </div>
+        <div class="picker" onclick="setting(3)">
+            <text class="back">设置></text>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

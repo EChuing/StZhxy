@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>主页面</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <script src="http://pic-static.fangzhizun.com/jquery/2.1.4/jquery.min.js"></script>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <!-- Link Swiper's CSS -->
+  <!--  <link rel="stylesheet" href="css/swiper.min.css">-->
+
+  <style type="text/css">
+    .cha {
+      margin-top: 10%;
+    }
+    .align {
+      margin-top: -20px;
+    }
+    #btn {
+      width: 40%;
+      margin-left:0%;
+      text-align: center;
+      margin: auto;
+      color: deepskyblue;
+      border:1px solid deepskyblue;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 15px;
+    }
+    #logow {
+      height: 160px;
+      margin-top: 10%
+    }
+    .input1 {
+      height: 50px;
+      width: 100%;
+      border-width: 0;
+    }
+  </style>
+  <script type="text/javascript">
+    $(function(){
+      var bottomNavigation="0";
+      location.href="commonAreaList?bottomNavigation="+bottomNavigation;
+
+    })
+    // function deviceIndex() {
+    //         window.location.href='deviceIndex.html';
+    // }
+  </script>
+</head>
+<body >
+<div onclick="commonAreaList();">教室列表</div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <script src="http://pic-static.fangzhizun.com/jquery/2.1.4/jquery.min.js"></script>
+  <!-- Link Swiper's CSS -->
+<!--  <link rel="stylesheet" href="css/swiper.min.css">-->
+
+  <style type="text/css">
+    .cha {
+      margin-top: 10%;
+    }
+    .align {
+      margin-top: -20px;
+    }
+    #btn {
+      width: 40%;
+      margin-left:0%;
+      text-align: center;
+      margin: auto;
+      color: deepskyblue;
+      border:1px solid deepskyblue;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 15px;
+    }
+    #logow {
+      height: 160px;
+      margin-top: 10%
+    }
+    .input1 {
+      height: 50px;
+      width: 100%;
+      border-width: 0;
+    }
+  </style>
+  <script type="text/javascript">
+    function login() {
+      var pass = $("#pass").val();
+      var userName = $("#userName").val();
+      $.ajax({
+        //几个参数需要注意一下
+        type: "POST",//方法类型
+        dataType: "json",//预期服务器返回的数据类型
+        url: "user/login" ,//url
+        data: {
+          password : pass,
+          userName : userName,
+        },
+        success: function (result) {
+          console.log(result);
+          if(result.code == 1){
+            window.location.href='renterIndex.html';
+          }else{
+            alert(result.msg);
+          }
+        }
+      });
+    }
+  </script>
+</head>
+<body >
+<div class="container">
+  <!--logo块 -->
+  <div class="container-fluid" id="logoc">
+    <div class="row" id="logow" style="text-align: center;">
+      <img class="" th:src="@{|${logoCompany}|}" style="width: 70%; margin-top: 20%;" />
+<!--      <img class="" src=" http://pic-static.fangzhizun.com/images/logo/fzz_login.png" style="width: 70%; margin-top: 20%;" />-->
+
+    </div>
+  </div>
+
+  <form id="renterlogincheck">
+    <div class="panel-heading">
+      <!--身份证块-->
+      <div class="cha">
+        <div class="align">
+          <input id="userName" name="idcard" type="text" class="input1" placeholder="请输入账号" />
+          <hr width="100%" size="0.5" />
+        </div>
+      </div>
+      <!--密码号码块-->
+      <div class="cha">
+        <div class="align">
+          <input type="password" id="pass" name="pass"  class="input1" placeholder="请输入密码" />
+          <hr width="100%" size="0.5" />
+        </div>
+      </div>
+      <!--确认按钮块-->
+      <div class="cha">
+        <div id="new">
+          <div class="container" style="margin: auto;text-align: center;">
+            <button type="button" onclick="login()"	class="btn btn-info btn-block" id="btn">登录</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+</body>
+</html>

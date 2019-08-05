@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fangzhizun.cowxgzh.dao.CodeStorageDao" >
+  <resultMap id="BaseResultMap" type="com.fangzhizun.cowxgzh.entity.CodeStorage" >
+    <id column="cs_id" property="csId" jdbcType="INTEGER" />
+    <result column="cs_co_id" property="csCoId" jdbcType="VARCHAR" />
+    <result column="cs_sn" property="csSn" jdbcType="VARCHAR" />
+    <result column="cs_air_conditioning_code" property="csAirConditioningCode" jdbcType="VARCHAR" />
+    <result column="cs_road" property="csRoad" jdbcType="VARCHAR" />
+  </resultMap>
+
+	<!-- 查询用户-->
+	<select id="select" resultMap="BaseResultMap" parameterType="com.fangzhizun.cowxgzh.entity.CodeStorage">
+		select * from code_storage
+	    <where>
+	      	<if test="csCoId != null">
+	    		and cs_co_id = #{csCoId}
+	    	</if>
+	      	<if test="csSn != null">
+	    		and cs_sn = #{csSn}
+	    	</if>
+	      	<if test="csAirConditioningCode != null">
+	    		and cs_air_conditioning_code = #{csAirConditioningCode}
+	    	</if>
+	      	<if test="csRoad != null">
+	    		and cs_road = #{csRoad}
+	    	</if>
+	    </where>
+	    order by cs_id limit 1
+	</select>
+
+</mapper>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>模式设置</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <script src="http://pic-static.fangzhizun.com/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="js/device/modeSettings.js"></script>
+    <script type="text/javascript" src="js/device/intelligentJump.js"></script>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        html,body{
+            position: relative;
+            height: 100%;
+            background-color:#eff3f7;
+            margin: 0 3px 0 3px;
+            overflow-x:hidden;
+        }
+
+        .all {
+            width: 100%;
+            background-color: #EFF3F7;
+        }
+
+        .content {
+            width: 97%;
+            height: 80px;
+            margin: 2% 1.5%;
+            margin-right: 0px;
+            background-color: white;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .content img {
+            width: 50px;
+            height: 50px;
+            margin-left: 15px;
+            margin-right: 10px;
+        }
+
+        .content_info {
+            width: 50%;
+            height: 50px;
+            margin: 0 4% 0 3%;
+            font-weight: 550;
+            font-size: 20px;
+            line-height: 50px;
+        }
+
+
+        .picker{
+            width: auto;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .back{
+            font-size: 18px;
+            font-weight: 300;
+        }
+        /*.site {*/
+        /*    display: -webkit-flex;*/
+        /*    -webkit-justify-content: center;*/
+        /*    -webkit-align-items: center;*/
+        /*    font-size: 16px;*/
+        /*    margin-top: 8px;*/
+        /*}*/
+
+        /*.phone {*/
+        /*    display: -webkit-flex;*/
+        /*    -webkit-justify-content: center;*/
+        /*    -webkit-align-items: center;*/
+        /*    font-size: 16px;*/
+        /*    margin-top: -20px;*/
+        /*}*/
+
+        /*.technology {*/
+        /*    display: -webkit-flex;*/
+        /*    -webkit-justify-content: center;*/
+        /*    -webkit-align-items: center;*/
+        /*    font-size: 16px;*/
+        /*    margin-top: -20px;*/
+        /*    color: black;*/
+        /*}*/
+    </style>
+</head>
+
+<body>
+<!--<div style="overflow-y: auto;height:88%">-->
+<div style="position: relative;">
+    <input id="hsId" type="hidden" th:value="${hsId}">
+    <div style="width: 100%;height:95%">
+        <!--情景模式设置-->
+        <div class="all"></div>
+    </div>
+</div>
+<div style="height:10%;width: 100%"></div>
+
+
+<!--尾部导航栏-->
+<div style="width: 100%;">
+    <div style="border-top: 1px solid #F0F8FF;width: 100%;height:70px;z-index:999;position:fixed;bottom:0;background-color: #ffffff;margin: 5px 0 0 0">
+        <div style="text-align: center;margin: 5px 0 0 0;float:left;width:25%" onclick="commonAreaList()">
+            <img src="img/wodezhijia.png" style="width: 30px;height: 30px;" data-toggle="modal" data-target="#myModal_1" />
+            <div style="color: black;">教室列表</div>
+        </div>
+        <div style="text-align: center;margin: 5px 0 0 0;float:left;width:25%" onclick="commonScenarios()">
+            <img src="img/moshishezhi.png" style="width: 30px;height: 30px;" data-toggle="modal" data-target="#myModal_1" />
+            <div style="color: black;">常用情景</div>
+        </div>
+        <div style="text-align: center;margin: 5px 0 0 0;float:left;width:25%" onclick="modeSettings()">
+            <img src="img/moshishezhi.png"  style="width: 30px;height: 30px;" data-toggle="modal" data-target="#myModal_1" />
+            <div style="color: black;">模式设置</div>
+        </div>
+        <div style="text-align: center;margin: 5px 0 0 0;float:left;width:25%" onclick="situatinalPatterns()">
+            <img src="img/qingjingmoshi.png" style="width: 30px;height: 30px;" data-toggle="modal" data-target="#myModal_1" />
+            <div style="color: black;">情景模式</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

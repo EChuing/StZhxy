@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>窗帘开关</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1">
+    <link rel="stylesheet" href="css/device/curtains.css"/>
+    <link rel="stylesheet" href="js/bootstrap-4.0.0/css/bootstrap.min.css" />
+    <script  type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/giveYou/curtains.js"></script>
+
+<body>
+    <!-- 隐藏input接受参数 -->
+    <input id="deviceInformation" type="hidden" th:value="${deviceInformation}"/>
+    <div class="top">
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div id="parent"></div>
+            <div class="col-4 width2">
+                <p class="operation" id="open"   data-status="8080">全开</p>
+            </div>
+            <div class="col-4 width2">
+                <p class="operation" id="pause" data-status="2020">暂停</p>
+            </div>
+            <div class="col-4 width2">
+                <p class="operation" id="close" data-status="4040">全关</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

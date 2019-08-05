@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>智慧校园</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <link rel="stylesheet" href="css/swiper/swiper.min.css">
+    <link rel="stylesheet" href="css/style/weui.css" />
+    <link rel="stylesheet" href="css/style/example.css" />
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
+    <script src="http://pic-static.fangzhizun.com/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="js/device/intelligentJump.js"></script>
+    <script type="text/javascript" src="js/device/commonAreaList.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.0/js/swiper.min.js"></script>
+
+    <!-- Demo styles -->
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+            background-color: #eff3f7;
+            margin: 0 3px 0 3px;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 450px;
+        }
+
+        .swiper-slide {
+            text-align: center;
+        }
+
+        #container {
+            width: 100%;
+            height: 58px;
+            margin-left: -4.5%;
+        }
+
+        #container form {
+            position: relative;
+            width: 92%;
+            margin: 0 auto;
+        }
+
+        .search {
+            width: 103.5%;
+            height: 150px;
+            margin: 2% 1%;
+            margin-right: 0px;
+            background-color: #eff3f7;
+        }
+
+        #container input,
+        button {
+            border: none;
+            outline: none;
+        }
+
+        #container input {
+            width: 99%;
+            height: 54px;
+            padding-left: 12px;
+            background-color: white;
+        }
+
+        #container button {
+            border-radius: 5px;
+            height: 55px;
+            width: 90px;
+            cursor: pointer;
+            position: absolute;
+        }
+
+        /*搜索框6*/
+
+        .bar6 input {
+            border: 2px solid #c5464a;
+            border-radius: 5px;
+            font-size: 20px;
+            letter-spacing:5px;
+            background: transparent;
+            top: 0;
+            right: 0;
+        }
+
+        .bar6 button {
+            background:  #3CC51F;
+            border-radius: 5px;
+            border-radius: 0 5px 5px 0;
+            width: 80px;
+            top: 0;
+            left:77%;
+        }
+
+        .bar6 button:before {
+            content: "搜索";
+            font-size: 25px;
+            color: #F9F0DA;
+        }
+
+        .content {
+            width: 98%;
+            height: 60px;
+            margin: 2% 0.5%;
+            margin-right: 0px;
+            background-color: white;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            border-radius: 5px;
+        }
+
+        .content span {
+            font-size: 20px;
+            margin-left: 15px;
+        }
+
+        .search input {
+            width: 50%;
+            height: 80px;
+        }
+
+    </style>
+</head>
+
+<body>
+<!-- Swiper -->
+<div style="position: relative;">
+    <input id="Identification" type="hidden" th:value="${bottomNavigation}">
+    <input id="hsId" type="hidden" th:value="${hsId}">
+
+    <!--头部图片-->
+    <div class="swiper-container1">
+        <div style="width:100%;height:5px; background-color:#eff3f7;"></div>
+        <div class="swiper-wrapper1" id="img">
+            <div class="swiper-slide1"><img src="img/head.png" style="width:100%;height:165px;"></div>
+        </div>
+    </div>
+
+    <!--公区搜索-->
+    <div id="container">
+        <div class="search bar6">
+            <form>
+                <input  placeholder="请输入名称" name="cname" id="publicName">
+                <button type="button" onclick="hsNameSubmit()"></button>
+            </form>
+        </div>
+    </div>
+
+
+    <!--显示公区名称-->
+    <div id="hsAddCommunity">
+<!--        <div class="content">-->
+<!--                <div>-->
+<!--                    <span>新南滨大楼503</span>-->
+<!--                </div>-->
+<!--        </div>-->
+    </div>
+
+</div>
+
+<div style="height:10%;width: 100%"></div>
+
+<!--尾部导航栏-->
+<div style="width: 100%;" id="bottomNavigation">
+    <div style="border-top: 1px solid #F0F8FF;width: 100%;height:70px;z-index:999;position:fixed;bottom:0;background-color: #ffffff;margin: 5px 0 0 0">
+        <div style="text-align: center;margin: 5px 0 0 0;float:left;width:25%" onclick="commonAreaList()">
+            <img src="img/wodezhijia.png" style="width: 30px;height: 30px;" data-toggle="modal" data-target="#myModal_1" />
+            <div style="color: black;">教室列表</div>
+        </div>
+        <div style="text-align: center;margin: 5px 0 0 0;float:left;width:25%" onclick="commonScenarios()">
+            <img src="img/moshishezhi.png" style="width: 30px;height: 30px;" data-toggle="modal" data-target="#myModal_1" />
+            <div style="color: black;">常用情景</div>
+        </div>
+        <div style="text-align: center;margin: 5px 0 0 0;float:left;width:25%" onclick="modeSettings()">
+            <img src="img/moshishezhi.png"  style="width: 30px;height: 30px;" data-toggle="modal" data-target="#myModal_1" />
+            <div style="color: black;">模式设置</div>
+        </div>
+        <div style="text-align: center;margin: 5px 0 0 0;float:left;width:25%" onclick="situatinalPatterns()">
+            <img src="img/qingjingmoshi.png" style="width: 30px;height: 30px;" data-toggle="modal" data-target="#myModal_1" />
+            <div style="color: black;">情景模式</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var mySwiper = new Swiper('.swiper-container', {
+        autoplay: false,
+        loop: true, // 循环模式选项
+        observer: true, //修改swiper自己或子元素时，自动初始化swiper
+        observeParents: false, //修改swiper的父元素时，自动初始化swiper
+        on: {
+            slideChange: function() {
+                var index = this.activeIndex;
+            },
+        },
+    })
+</script>
+</body>
+
+</html>

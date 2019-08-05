@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fangzhizun.cowxgzh.dao.info.PublicAreaDao" >
+  <resultMap id="BaseResultMap" type="com.fangzhizun.cowxgzh.po.info.InfoHouse4store" >
+	  <id column="hs_id" property="hsId" jdbcType="INTEGER" />
+	  <result column="hs_storefront" property="hsStorefront" jdbcType="INTEGER" />
+	  <result column="hs_department" property="hsDepartment" jdbcType="INTEGER" />
+	  <result column="hs_renter_id" property="hsRenterId" jdbcType="INTEGER" />
+	  <result column="hs_landlord_id" property="hsLandlordId" jdbcType="INTEGER" />
+	  <result column="hs_house_id" property="hsHouseId" jdbcType="INTEGER" />
+	  <result column="hs_house_dict_id" property="hsHouseDictId" jdbcType="INTEGER" />
+	  <result column="hs_user_id" property="hsUserId" jdbcType="INTEGER" />
+	  <result column="hs_admin_user_id" property="hsAdminUserId" jdbcType="INTEGER" />
+	  <result column="hs_manager_user_id" property="hsManagerUserId" jdbcType="INTEGER" />
+	  <result column="hs_section_type" property="hsSectionType" jdbcType="VARCHAR" />
+	  <result column="hs_house_type" property="hsHouseType" jdbcType="VARCHAR" />
+	  <result column="hs_house_direction" property="hsHouseDirection" jdbcType="VARCHAR" />
+	  <result column="hs_house_owner" property="hsHouseOwner" jdbcType="VARCHAR" />
+	  <result column="hs_house_square" property="hsHouseSquare" jdbcType="DOUBLE" />
+	  <result column="hs_furniture_config" property="hsFurnitureConfig" jdbcType="VARCHAR" />
+	  <result column="hs_house_price" property="hsHousePrice" jdbcType="DOUBLE" />
+	  <result column="hs_water_vol_first" property="hsWaterVolFirst" jdbcType="DOUBLE" />
+	  <result column="hs_electrit_vol_first" property="hsElectritVolFirst" jdbcType="DOUBLE" />
+	  <result column="hs_gas_vol_first" property="hsGasVolFirst" jdbcType="DOUBLE" />
+	  <result column="hs_hotwater_vol_first" property="hsHotwaterVolFirst" jdbcType="DOUBLE" />
+	  <result column="hs_hotair_vol_first" property="hsHotairVolFirst" jdbcType="DOUBLE" />
+	  <result column="hs_payment_type" property="hsPaymentType" jdbcType="VARCHAR" />
+	  <result column="hs_register_time" property="hsRegisterTime" jdbcType="TIMESTAMP" />
+	  <result column="hs_add_province" property="hsAddProvince" jdbcType="VARCHAR" />
+	  <result column="hs_add_city" property="hsAddCity" jdbcType="VARCHAR" />
+	  <result column="hs_add_district" property="hsAddDistrict" jdbcType="VARCHAR" />
+	  <result column="hs_add_zone" property="hsAddZone" jdbcType="VARCHAR" />
+	  <result column="hs_add_street" property="hsAddStreet" jdbcType="VARCHAR" />
+	  <result column="hs_add_community" property="hsAddCommunity" jdbcType="VARCHAR" />
+	  <result column="hs_add_building" property="hsAddBuilding" jdbcType="VARCHAR" />
+	  <result column="hs_add_doorplateno" property="hsAddDoorplateno" jdbcType="VARCHAR" />
+	  <result column="hs_add_floor" property="hsAddFloor" jdbcType="VARCHAR" />
+	  <result column="hs_split_identifier" property="hsSplitIdentifier" jdbcType="VARCHAR" />
+	  <result column="hs_house_deposit" property="hsHouseDeposit" jdbcType="DOUBLE" />
+	  <result column="hs_the_term" property="hsTheTerm" jdbcType="VARCHAR" />
+	  <result column="hs_begin_time" property="hsBeginTime" jdbcType="DATE" />
+	  <result column="hs_end_time" property="hsEndTime" jdbcType="DATE" />
+	  <result column="hs_lease_state" property="hsLeaseState" jdbcType="VARCHAR" />
+	  <result column="hs_lease_type" property="hsLeaseType" jdbcType="INTEGER" />
+	  <result column="hs_house_key" property="hsHouseKey" jdbcType="VARCHAR" />
+	  <result column="hs_rent_holiday" property="hsRentHoliday" jdbcType="INTEGER" />
+	  <result column="hs_decoration_holiday" property="hsDecorationHoliday" jdbcType="INTEGER" />
+	  <result column="hs_house_note" property="hsHouseNote" jdbcType="VARCHAR" />
+	  <result column="hs_total_vacancy_day" property="hsTotalVacancyDay" jdbcType="INTEGER" />
+	  <result column="hs_vacancy_day" property="hsVacancyDay" jdbcType="INTEGER" />
+	  <result column="hs_total_vacancy_cost" property="hsTotalVacancyCost" jdbcType="DOUBLE" />
+	  <result column="hs_latest_vacancy_cost" property="hsLatestVacancyCost" jdbcType="DOUBLE" />
+	  <result column="hs_state" property="hsState" jdbcType="VARCHAR" />
+	  <result column="hs_base" property="hsBase" jdbcType="DOUBLE" />
+	  <result column="hs_relations_cost" property="hsRelationsCost" jdbcType="DOUBLE" />
+	  <result column="hs_managed_cost" property="hsManagedCost" jdbcType="DOUBLE" />
+	  <result column="hs_bank_type" property="hsBankType" jdbcType="VARCHAR" />
+	  <result column="hs_bank_num" property="hsBankNum" jdbcType="VARCHAR" />
+	  <result column="hs_bank_name" property="hsBankName" jdbcType="VARCHAR" />
+	  <result column="hs_down_deposit" property="hsDownDeposit" jdbcType="VARCHAR" />
+	  <result column="hs_deposit_amount" property="hsDepositAmount" jdbcType="DOUBLE" />
+	  <result column="hs_intentional_id" property="hsIntentionalId" jdbcType="INTEGER" />
+	  <result column="hs_pop_id" property="hsPopId" jdbcType="INTEGER" />
+	  <result column="hs_salesman_id" property="hsSalesmanId" jdbcType="INTEGER" />
+	  <result column="hs_start_date" property="hsStartDate" jdbcType="DATE" />
+	  <result column="hs_end_date" property="hsEndDate" jdbcType="DATE" />
+	  <result column="hs_meter_reading_record" property="hsMeterReadingRecord" jdbcType="VARCHAR" />
+	  <result column="hs_desposit_account" property="hsDespositAccount" jdbcType="INTEGER" />
+	  <result column="hs_primitive_mother" property="hsPrimitiveMother" jdbcType="INTEGER" />
+	  <result column="hs_not_rent_split" property="hsNotRentSplit" jdbcType="INTEGER" />
+	  <result column="hs_main_img" property="hsMainImg" jdbcType="VARCHAR" />
+	  <result column="hs_house_title" property="hsHouseTitle" jdbcType="VARCHAR" />
+	  <result column="hs_corridor" property="hsCorridor" jdbcType="VARCHAR" />
+	  <result column="hs_appliance_settings" property="hsApplianceSettings" jdbcType="VARCHAR" />
+	  <result column="hs_open_home" property="hsOpenHome" jdbcType="VARCHAR" />
+	  <result column="hs_release_time" property="hsReleaseTime" jdbcType="VARCHAR" />
+	  <result column="hs_charges_paid" property="hsChargesPaid" jdbcType="VARCHAR" />
+	  <result column="hs_decoration_label" property="hsDecorationLabel" jdbcType="VARCHAR" />
+	  <result column="hs_custom_contacts" property="hsCustomContacts" jdbcType="VARCHAR" />
+	  <result column="hs_micronet_identification" property="hsMicronetIdentification" jdbcType="INTEGER" />
+	  <result column="hs_price_ladder" property="hsPriceLadder" jdbcType="VARCHAR" />
+	  <result column="hs_in_price" property="hsInPrice" jdbcType="DOUBLE" />
+	  <result column="hs_out_price" property="hsOutPrice" jdbcType="DOUBLE" />
+	  <result column="hs_guide_price" property="hsGuidePrice" jdbcType="DOUBLE" />
+	  <result column="hs_transaction_price" property="hsTransactionPrice" jdbcType="DOUBLE" />
+	  <result column="hs_daily_rent" property="hsDailyRent" jdbcType="DOUBLE" />
+	  <result column="hs_hot_daily_rent" property="hsHotDailyRent" jdbcType="DOUBLE" />
+	  <result column="hs_time_price" property="hsTimePrice" jdbcType="DOUBLE" />
+	  <result column="hs_dirty_house" property="hsDirtyHouse" jdbcType="INTEGER" />
+	  <result column="hs_room_type" property="hsRoomType" jdbcType="VARCHAR" />
+	  <result column="hs_residentiality" property="hsResidentiality" jdbcType="INTEGER" />
+	  <result column="hs_lease_term" property="hsLeaseTerm" jdbcType="VARCHAR" />
+	  <result column="hs_show_room" property="hsShowRoom" jdbcType="VARCHAR" />
+	  <result column="hs_parking_spaces" property="hsParkingSpaces" jdbcType="VARCHAR" />
+	  <result column="hs_auto_send_msg" property="hsAutoSendMsg" jdbcType="VARCHAR" />
+  </resultMap>
+
+	<!-- 查询公區未租房間，有條件則條件查詢-->
+	<select id="selecePublicAreaList" resultMap="BaseResultMap" parameterType="com.fangzhizun.cowxgzh.po.info.InfoHouse4store">
+		select  * from info_house_4store  ih
+		left outer join sys_user_class suc on suc.suc_class_id =ih.hs_id
+		<where>
+			<if test="hsAddCommunity != null and hsAddCommunity != '' ">
+				and hs_add_community like '%${hsAddCommunity}%'
+			</if>
+			<if test="sucUserId != null and sucUserId != '' ">
+				and suc_user_id=#{sucUserId,jdbcType=INTEGER}
+			</if>
+			and (hs_add_city="办公区" or hs_add_city="公区" or hs_add_city="教室" or hs_add_city="办公室")and hs_state="正常"
+		</where>
+	</select>
+</mapper>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fangzhizun.cowxgzh.dao.jour.JourUserDeviceDao" >
+  <resultMap id="BaseResultMap" type="com.fangzhizun.cowxgzh.po.jour.JourUserDevice" >
+	  <id column="sud_id" property="sudId" jdbcType="INTEGER" />
+	  <result column="jud_user_id" property="judUserId" jdbcType="INTEGER" />
+	  <result column="jhd_hs_id" property="jhdHsId" jdbcType="INTEGER" />
+	  <result column="jud_device_id" property="judDeviceId" jdbcType="INTEGER" />
+	  <result column="jud_create_time" property="judCreateTime" jdbcType="VARCHAR" />
+
+	  <!--设备表-->
+	  <result column="id" property="id" jdbcType="INTEGER" />
+	  <result column="dev_id" property="devId" jdbcType="VARCHAR" />
+	  <result column="dev_brand_id" property="devBrandId" jdbcType="INTEGER" />
+	  <result column="dev_type" property="devType" jdbcType="VARCHAR" />
+	  <result column="dev_nickname" property="devNickname" jdbcType="VARCHAR" />
+	  <result column="dev_username" property="devUsername" jdbcType="VARCHAR" />
+	  <result column="dev_password" property="devPassword" jdbcType="VARCHAR" />
+	  <result column="dev_sn" property="devSn" jdbcType="VARCHAR" />
+	  <result column="dev_auth_id" property="devAuthId" jdbcType="VARCHAR" />
+	  <result column="dev_auth_secret" property="devAuthSecret" jdbcType="VARCHAR" />
+	  <result column="dev_spare1" property="devSpare1" jdbcType="VARCHAR" />
+	  <result column="dev_spare2" property="devSpare2" jdbcType="VARCHAR" />
+	  <result column="dev_only" property="devOnly" jdbcType="VARCHAR" />
+	  <result column="dev_time" property="devTime" jdbcType="TIMESTAMP" />
+	  <result column="dev_difference" property="devDifference" jdbcType="VARCHAR" />
+	  <result column="dev_idft_id" property="devIdftId" jdbcType="INTEGER" />
+	  <result column="dev_idst_id" property="devIdstId" jdbcType="INTEGER" />
+	  <result column="dev_first_type" property="devFirstType" jdbcType="INTEGER" />
+	  <result column="dev_second_type" property="devSecondType" jdbcType="INTEGER" />
+	  <result column="dev_user_id" property="devUserId" jdbcType="INTEGER" />
+	  <result column="dev_road" property="devRoad" jdbcType="INTEGER" />
+	  <result column="dev_img" property="devImg" jdbcType="VARCHAR" />
+	  <result column="dev_status" property="devStatus" jdbcType="VARCHAR" />
+  </resultMap>
+
+	<!-- 查询设备信息-->
+	<select id="selectDeviceInformation" resultMap="BaseResultMap" parameterType="com.fangzhizun.cowxgzh.po.jour.JourUserDevice">
+		select * from jour_device jd
+		left outer join jour_hs_device jhd on  jhd.jhd_device_id=jd.id
+		left outer join jour_user_device jud on jud.jud_device_id=jhd.jhd_device_id
+		where jhd_hs_id= #{jhdHsId,jdbcType=INTEGER}
+		and jud_user_id = #{judUserId,jdbcType=INTEGER}
+	</select>
+	<!--根据SN查询设备信息-->
+	<!-- 查询设备信息-->
+	<select id="selectDeviceName" resultMap="BaseResultMap" parameterType="com.fangzhizun.cowxgzh.po.jour.JourUserDevice">
+		select * from jour_device jd
+		where dev_auth_id= #{devAuthId,jdbcType=VARCHAR}
+	</select>
+</mapper>
